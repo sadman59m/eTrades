@@ -1,0 +1,6 @@
+
+#dependencies
+/node_modules
+
+#extention files
+.txt

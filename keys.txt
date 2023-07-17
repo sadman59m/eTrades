@@ -1,0 +1,8 @@
+sendInBlue:
+
+SMTP:
+key name: shop
+kay value: xsmtpsib-357ac339a58466e9fcf1fb89cd843fffd5a220cd335f5c1d7b603244dcfb8b9e-QIBXb8Zh6xDTWqfp
+
+sendInBlue:
+apiKey: "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"

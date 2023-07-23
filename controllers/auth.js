@@ -138,12 +138,12 @@ exports.postSignup = (req, res, next) => {
       return user.save();
     })
     .then((result) => {
-      transporter.sendMail({
-        to: email,
-        from: "shop@nodepractice.com",
-        subject: "Signed Up Confirmation",
-        html: `<h1> Account creation successful`,
-      });
+      // transporter.sendMail({
+      //   to: email,
+      //   from: "shop@nodepractice.com",
+      //   subject: "Signed Up Confirmation",
+      //   html: `<h1> Account creation successful`,
+      // });
       return res.redirect("/login");
     })
     .catch((err) => {
@@ -192,15 +192,18 @@ exports.postReset = (req, res, next) => {
         return user.save();
       })
       .then((result) => {
-        req.flash("error", "email sent. Please, check.");
-        res.redirect("/reset");
-        transporter.sendMail({
-          to: req.body.email,
-          from: "shop@nodepractice.com",
-          subject: "Reset Password",
-          html: `<p> Password reset requested. </p>
-              <p> Click this link http://localhost:3000/reset/${token} to set new password. This session will be expired in 1 hour.`,
-        });
+        // transporter.sendMail({
+        //   to: req.body.email,
+        //   from: "shop@nodepractice.com",
+        //   subject: "Reset Password",
+        //   html: `<p> Password reset requested. </p>
+        //       <p> Click this link http://localhost:3000/reset/${token} to set new password. This session will be expired in 1 hour.`,
+        // });
+        req.flash(
+          "error",
+          "functionality added.But Send in Blue keep deleting my free api keys 🙁"
+        );
+        return res.redirect("/reset");
       })
       .catch((err) => {
         const error = new Error(err);

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "practing node.js",
   "main": "app.js",
+  "engines": {
+    "node": "16.14.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",

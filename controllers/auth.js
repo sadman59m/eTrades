@@ -8,8 +8,7 @@ const { validationResult } = require("express-validator");
 
 const transporter = nodemailer.createTransport(
   new SendInBlueTransport({
-    apiKey:
-      "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",
+    apiKey: process.env.SENDINBLUE_KEY,
   })
 );
 
@@ -139,13 +138,13 @@ exports.postSignup = (req, res, next) => {
       return user.save();
     })
     .then((result) => {
-      res.redirect("/login");
-      return transporter.sendMail({
+      transporter.sendMail({
         to: email,
         from: "shop@nodepractice.com",
         subject: "Signed Up Confirmation",
         html: `<h1> Account creation successful`,
       });
+      return res.redirect("/login");
     })
     .catch((err) => {
       const error = new Error(err);

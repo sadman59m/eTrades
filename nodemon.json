@@ -1,0 +1,9 @@
+{
+    "env": {
+        "MONGO_USER": "sadman",
+        "MONGO_PASSWORD": "sadman125",
+        "MONGO_DEFAULT_DATABASE": "shop",
+        "STRIPE_KEY": "sk_test_51NT3t7KdPj4lv6HNMT3XQ5FEksZXSONiT29KV4VLWEAfbAHYTALZZZUyozZgpsMXto37yefd6p7R2yLKwBQ7nn8O00WYPmg6fy",
+        "SENDINBLUE_KEY": "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"
+    }
+}

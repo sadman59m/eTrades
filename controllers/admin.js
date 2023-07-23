@@ -199,25 +199,11 @@ exports.deleteProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-  // Product.find({ userId: req.user._id })
-  //   .then((products) => {
-  //     // console.log(products);
-  //     res.render("admin/products", {
-  //       prods: products,
-  //       pageTitle: "Admin Products",
-  //       path: "/admin/products",
-  //     });
-  //   })
-  //   .catch((err) => {
-  //     const error = new Error(err);
-  //     error.httpStatusCode = 500;
-  //     return next(error);
-  //   });
-
   let currentPage = +req.query.page || 1;
   let totalItems;
 
-  Product.countDocuments({ userId: req.user._id })
+  Product.find()
+    .countDocuments({ userId: req.user._id })
     .then((prodNums) => {
       totalItems = prodNums;
       return Product.find({ userId: req.user._id })
@@ -225,12 +211,7 @@ exports.getProducts = (req, res, next) => {
         .limit(ITEMS_PER_PAGE);
     })
     .then((products) => {
-      if (products.length < 1) {
-        currentPage -= 1;
-        if (currentPage === 0) currentPage = 1;
-        return res.redirect(`/admin/products?page=${currentPage}`);
-      }
-      res.render("admin/products", {
+      return res.render("admin/products", {
         prods: products,
         pageTitle: "Admin Products",
         path: "/admin/products",

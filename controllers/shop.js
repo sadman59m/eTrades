@@ -2,9 +2,7 @@ const fs = require("fs");
 const path = require("path");
 
 const PDFDocument = require("pdfkit");
-const stripe = require("stripe")(
-  "sk_test_51NT3t7KdPj4lv6HNMT3XQ5FEksZXSONiT29KV4VLWEAfbAHYTALZZZUyozZgpsMXto37yefd6p7R2yLKwBQ7nn8O00WYPmg6fy"
-);
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 const Product = require("../models/product");
 const Order = require("../models/order");
@@ -15,7 +13,8 @@ exports.getProducts = (req, res, next) => {
   let currentPage = +req.query.page || 1;
   let totalItems;
 
-  Product.countDocuments()
+  Product.find()
+    .countDocuments()
     .then((prodNums) => {
       totalItems = prodNums;
       return Product.find()
@@ -23,12 +22,7 @@ exports.getProducts = (req, res, next) => {
         .limit(ITEMS_PER_PAGE);
     })
     .then((products) => {
-      if (products.length < 1) {
-        currentPage -= 1;
-        if (currentPage === 0) currentPage = 1;
-        return res.redirect(`/products?page=${currentPage}`);
-      }
-      res.render("shop/product-list", {
+      return res.render("shop/product-list", {
         prods: products,
         pageTitle: "Products",
         path: "/products",
@@ -89,12 +83,7 @@ exports.getIndex = (req, res, next) => {
         .limit(ITEMS_PER_PAGE);
     })
     .then((products) => {
-      if (products.length < 1) {
-        currentPage -= 1;
-        if (currentPage === 0) currentPage = 1;
-        return res.redirect(`/?page=${currentPage}`);
-      }
-      res.render("shop/index", {
+      return res.render("shop/index", {
         prods: products,
         pageTitle: "Shop",
         path: "/",

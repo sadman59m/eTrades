@@ -6,9 +6,11 @@ const nodemailer = require("nodemailer");
 const SendInBlueTransport = require("nodemailer-sendinblue-transport");
 const { validationResult } = require("express-validator");
 
+const API_KEY = process.env.SENDINBLUE_KEY;
+
 const transporter = nodemailer.createTransport(
   new SendInBlueTransport({
-    apiKey: process.env.SENDINBLUE_KEY,
+    apiKey: API_KEY,
   })
 );
 
@@ -115,6 +117,7 @@ exports.postSignup = (req, res, next) => {
   if (!errors.isEmpty()) {
     // req.flash("error", errors.array()[0].msg);
     // console.log(errors.array());
+
     return res.status(422).render("auth/signup", {
       path: "/signup",
       pageTitle: "Signup",
@@ -138,12 +141,15 @@ exports.postSignup = (req, res, next) => {
       return user.save();
     })
     .then((result) => {
-      // transporter.sendMail({
-      //   to: email,
-      //   from: "shop@nodepractice.com",
-      //   subject: "Signed Up Confirmation",
-      //   html: `<h1> Account creation successful`,
-      // });
+      if (API_KEY) {
+        transporter.sendMail({
+          to: email,
+          from: "shop@nodepractice.com",
+          subject: "Signed Up Confirmation",
+          html: `<h1> Account creation successful`,
+        });
+      }
+      req.flash("error", "Account created Successfully! Please, log in.");
       return res.redirect("/login");
     })
     .catch((err) => {
@@ -192,17 +198,21 @@ exports.postReset = (req, res, next) => {
         return user.save();
       })
       .then((result) => {
-        // transporter.sendMail({
-        //   to: req.body.email,
-        //   from: "shop@nodepractice.com",
-        //   subject: "Reset Password",
-        //   html: `<p> Password reset requested. </p>
-        //       <p> Click this link http://localhost:3000/reset/${token} to set new password. This session will be expired in 1 hour.`,
-        // });
-        req.flash(
-          "error",
-          "functionality added.But Send in Blue keep deleting my free api keys 🙁"
-        );
+        if (API_KEY) {
+          transporter.sendMail({
+            to: req.body.email,
+            from: "shop@nodepractice.com",
+            subject: "Reset Password",
+            html: `<p> Password reset requested. </p>
+                <p> Click this link https://online-shop-sadman59.onrender.com/reset/${token} to set new password. This session will be expired in 1 hour.`,
+          });
+          req.flash("error", "Please, Check your email for the reset link.");
+        } else {
+          req.flash(
+            "error",
+            "Send in blue must have deleted my API KEY again! 🙁"
+          );
+        }
         return res.redirect("/reset");
       })
       .catch((err) => {
@@ -219,7 +229,7 @@ exports.getNewPassword = (req, res, next) => {
     .then((user) => {
       if (!user) {
         return res.send(`<h1> Session Expired </h1>
-                <h3> Click <a href="http://localhost:300/reset"> here </a> to go back. </h3>`);
+                <h3> Click <a href="https://online-shop-sadman59.onrender.com/login"> here </a> to go back. </h3>`);
       }
       let message = req.flash("error");
       if (message.length > 0) {

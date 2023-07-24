@@ -1,4 +1,11 @@
-# NODE.JS project
+# Online Shop
 
-This is an e-commerce project using node.js at the back-end. It follows the MVC pattern.
-This website offers most of the traditional e-commerce website features.
+#Tech stack
+Node.js, Express.js, mongoDB, mongooes, EJS.
+
+#Features:
+- Show all products for general visitors.
+- User singup form, login, password reset.
+- Add to cart and order after login.
+- Stripe payment integration.
+- create, update and delete own products after login.

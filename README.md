@@ -2,6 +2,11 @@
 
 Try live-site: https://online-shop-sadman59.onrender.com
 
+Where users can purchase products as well as add, edit, delete their own products.
+
+This project follows the 'MVC' architectural pattern.
+The views are rendered from server.
+
 # Tech stack
 
 - Node.js

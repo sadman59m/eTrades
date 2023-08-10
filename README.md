@@ -1,6 +1,6 @@
 # TradeWave
 
-Checkout live: https://online-shop-sadman59.onrender.com
+Checkout live: https://tradewave.onrender.com/
 
 Where users can purchase products as well as add, edit, delete their own products.
 

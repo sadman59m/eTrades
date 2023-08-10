@@ -1,14 +1,12 @@
-# Online Shop
+# TradeWave
 
-Try live-site: https://online-shop-sadman59.onrender.com
+Checkout live: https://online-shop-sadman59.onrender.com
 
 Where users can purchase products as well as add, edit, delete their own products.
 
-This project follows the 'MVC' architectural pattern.
-The views are rendered from server.
+A multi-user e-commerce platform created following the MVC architectural pattern.  User authentication and session management with the express session. Users are able to purchase,  create, update, and delete their own products. Server-side input data verification and validation. CSRF attack prevention using csrf token system.  Stripe payment integration for handling payments.
 
 # Tech stack
-
 - Node.js
 - Express.js
 - mongoDB
@@ -16,7 +14,6 @@ The views are rendered from server.
 - EJS
 
 # Features:
-
 - Show all products for general visitors.
 - User singup form, login, password reset.
 - Add to cart and order after login.

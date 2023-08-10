@@ -1,4 +1,4 @@
-# TradeWave
+# eTrades
 
 Checkout live: https://tradewave.onrender.com/
 

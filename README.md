@@ -1,4 +1,4 @@
-# postIt
+# eTrades
 - A multi-user e-commerce platform created following the MVC architectural pattern where users are able to purchase,  create, update, and delete their own products.
 - The main goal of this project was to practice building a full-stack project with server-side rendering for pages. Used node.js, Express, and MongoDB. Used EJS as the templating engine. Learned how server-side rendering works.
 

@@ -1,6 +1,10 @@
 # eTrades
 
-Checkout live:  https://ill-pig-cardigan.cyclic.cloud
+# Live site
+- https://ill-pig-cardigan.cyclic.cloud
+- For Quick login
+  Email: test@test.com
+  password: tester
 
 Where users can purchase products as well as add, edit, delete their own products.
 

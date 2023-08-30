@@ -10,7 +10,7 @@ Checkout live: https://ill-pig-cardigan.cyclic.cloud
 
 # Features
 - Show all products for all visitors.
-- User signup, login, and password reset features.
+- User signup, login, and password reset features. 
 - Add to cart and place order after login.
 - Generate PDF receipt after placing order.
 - Stripe payment integration.

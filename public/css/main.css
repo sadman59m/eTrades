@@ -117,12 +117,10 @@ form {
 }
 
 .mobile-nav__item button {
-  font: inherit;
-  background: transparent;
-  border: none;
   text-decoration: none;
-  color: white;
-  cursor: pointer;
+  color: black;
+  font-size: 1.5rem;
+  padding: 0.5rem 2rem;
 }
 
 .mobile-nav__item a:active,

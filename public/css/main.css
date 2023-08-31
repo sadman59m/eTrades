@@ -116,6 +116,15 @@ form {
   padding: 0.5rem 2rem;
 }
 
+.mobile-nav__item button {
+  font: inherit;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
 .mobile-nav__item a:active,
 .mobile-nav__item a:hover,
 .mobile-nav__item a.active {

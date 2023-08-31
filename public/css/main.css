@@ -121,6 +121,10 @@ form {
   color: black;
   font-size: 1.5rem;
   padding: 0.5rem 2rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .mobile-nav__item a:active,
